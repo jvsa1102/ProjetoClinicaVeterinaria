@@ -1,0 +1,57 @@
+﻿@page
+@model WebClinic.Pages.Procedimentos.IndexModel
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h2>Procedimentos</h2>
+
+<div>
+    <a asp-page="Create"><input type="button" class="btn btn-primary" value="Agendar procedimento"></a>
+    <a asp-page="../TiposProcedimentos/Index"><input type="button" class="btn btn-primary" value="Tipos de procedimento"></a>
+</div>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                Data de Realização
+            </th>
+            <th>
+                Tipo de procedimento
+            </th>
+            <th>
+                Médico responsável
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Procedimento[0].Animal)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model.Procedimento.OrderBy(e => e.DataRealizacao)) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.DataRealizacao)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TipoProcedimento.Nome)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Medico.Nome)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Animal.Nome)
+            </td>
+            <td>
+                <a asp-page="./Edit" asp-route-id="@item.ID">Alterar</a> |
+                <a asp-page="./Details" asp-route-id="@item.ID">Inspecionar</a> |
+                <a asp-page="./Delete" asp-route-id="@item.ID">Deletar</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
+

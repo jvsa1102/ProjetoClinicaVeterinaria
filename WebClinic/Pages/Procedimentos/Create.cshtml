@@ -1,0 +1,56 @@
+﻿@page
+@model WebClinic.Pages.Procedimentos.CreateModel
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h2>Procedimentos</h2>
+
+<h4>Novo procedimento</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="Procedimento.DataRealizacao" class="control-label">Data de realização</label>
+                <input asp-for="Procedimento.DataRealizacao" class="form-control" />
+                <span asp-validation-for="Procedimento.DataRealizacao" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Procedimento.Status" class="control-label"></label>
+                <input asp-for="Procedimento.Status" class="form-control" />
+                <span asp-validation-for="Procedimento.Status" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Procedimento.Pagamento" class="control-label"></label>
+                <input asp-for="Procedimento.Pagamento" class="form-control" />
+                <span asp-validation-for="Procedimento.Pagamento" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Procedimento.TipoProcedimentoID" class="control-label">Tipo de procedimento</label>
+                <select asp-for="Procedimento.TipoProcedimentoID" class="form-control" asp-items="ViewBag.TipoProcedimentoID"></select>
+            </div>
+            <div class="form-group">
+                <label asp-for="Procedimento.MedicoID" class="control-label">Médico responsável</label>
+                <select asp-for="Procedimento.MedicoID" class="form-control" asp-items="ViewBag.MedicoID"></select>
+            </div>
+            <div class="form-group">
+                <label asp-for="Procedimento.AnimalID" class="control-label">Animal</label>
+                <select asp-for="Procedimento.AnimalID" class="form-control" asp-items="ViewBag.AnimalID"></select>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Agendar" class="btn btn-default" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-page="Index">Voltar para lista</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

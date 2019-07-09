@@ -1,0 +1,71 @@
+﻿@page
+@model WebClinic.Pages.Consultas.DetailsModel
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h2>Detalhes da consulta</h2>
+
+<div>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Consulta.DataRealizacao)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Consulta.DataRealizacao)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Consulta.Descricao)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Consulta.Descricao)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Consulta.Relatorio)
+        </dt>
+        <dd>
+            <textarea rows="10" cols="80" readonly>
+                @Html.DisplayFor(model => model.Consulta.Relatorio)
+            </textarea>
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Consulta.Custo)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Consulta.Custo)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Consulta.Animal)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Consulta.Animal.Nome)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Consulta.Status)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Consulta.Status)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Consulta.Pagamento)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Consulta.Pagamento)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Consulta.Medico)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Consulta.Medico.Nome)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-page="./Edit" asp-route-id="@Model.Consulta.ID">Alterar</a> |
+    <a asp-page="./Index">Voltar para lista</a> |
+    <a asp-page="./Create">Agendar Retorno</a> |
+    <a asp-page="../Exames/Create">Agendar Exame</a> |
+    <a asp-page="../Procedimentos/Create">Agendar Procedimento</a>
+</div>

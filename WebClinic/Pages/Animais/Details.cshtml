@@ -1,0 +1,191 @@
+﻿@page
+@model WebClinic.Pages.Animais.DetailsModel
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+
+<br />
+
+<div class="container">
+    <h2>Dados do Animal</h2>
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Animal.Nome)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Animal.Nome)
+        </dd>
+        <dt>
+            Data de Nascimento
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Animal.DataNascimento)
+        </dd>
+        <dt>
+            Espécie
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Animal.Especie)
+        </dd>
+        <dt>
+            Raça
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Animal.Raca)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Animal.Sexo)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Animal.Sexo)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Animal.PesoAproximado)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Animal.PesoAproximado)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Animal.Cor)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Animal.Cor)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Animal.Porte)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Animal.Porte)
+        </dd>
+        <dt>
+            Proprietário
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Animal.Proprietario.Nome)
+        </dd>
+    </dl>
+    <div style="padding-top:20px" class="container">
+        <div class="row">
+            <div class="col-sm-3">
+                <div class="card" style="width: 18rem;">
+                    <img class="card-img-top" src="~/images/icons8-estetoscópio-48.png" alt="Consultas">
+                    <div class="card-body">
+                        <a asp-page="./Proprietarios/Index" class="btn btn-primary">Agendar Consulta</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-3">
+                <div class="card" style="width: 18rem;">
+                    <img class="card-img-top" src="~/images/icons8-seringa-48.png" alt="Exames">
+                    <div class="card-body">
+                        <a asp-page="./Animais/Index" class="btn btn-primary">Agendar Exame</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-3">
+                <div class="card" style="width: 18rem;">
+                    <img class="card-img-top" src="~/images/icons8-calendário-de-saúde-48.png" alt="Procedimentos">
+                    <div class="card-body">
+                        <a asp-page="./Consultas/Index" class="btn btn-primary">Agendar Procedimento</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div>
+    <h2>Agendamentos</h2>
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Animal.Procedimentos)
+        </dt>
+        <dd>
+            <table class="table">
+                <tr>
+                    <th>Data de realização</th>
+                    <th>Médico Responsável</th>
+                    <th></th>
+                </tr>
+                @foreach (var item in Model.Animal.Procedimentos.OrderBy(p => p.DataRealizacao))
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.DataRealizacao)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Medico.Nome)
+                        </td>
+                        <td>
+                            <a asp-page="../Procedimentos/Edit" asp-route-id="@item.ID">Alterar</a> |
+                            <a asp-page="../Procedimentos/Details" asp-route-id="@item.ID">Inspecionar</a> |
+                            <a asp-page="../Procedimentos/Delete" asp-route-id="@item.ID">Deletar</a>
+                        </td>
+                    </tr>
+                }
+            </table>
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Animal.Consultas)
+        </dt>
+        <dd>
+            <table class="table">
+                <tr>
+                    <th>Data de realização</th>
+                    <th>Médico Responsável</th>
+                    <th></th>
+                </tr>
+                @foreach (var item in Model.Animal.Consultas.OrderBy(p => p.DataRealizacao))
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.DataRealizacao)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Medico.Nome)
+                        </td>
+                        <td>
+                            <a asp-page="../Consultas/Edit" asp-route-id="@item.ID">Alterar</a> |
+                            <a asp-page="../Consultas/Details" asp-route-id="@item.ID">Inspecionar</a> |
+                            <a asp-page="../Consultas/Delete" asp-route-id="@item.ID">Deletar</a>
+                        </td>
+                    </tr>
+                }
+            </table>
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Animal.Exames)
+        </dt>
+        <dd>
+            <table class="table">
+                <tr>
+                    <th>Data de realização</th>
+                    <th>Médico Responsável</th>
+                    <th></th>
+                </tr>
+                @foreach (var item in Model.Animal.Exames.OrderBy(e => e.DataRealizacao))
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.DataRealizacao)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Medico.Nome)
+                        </td>
+                        <td>
+                            <a asp-page="../Exames/Edit" asp-route-id="@item.ID">Alterar</a> |
+                            <a asp-page="../Exames/Details" asp-route-id="@item.ID">Inspecionar</a> |
+                            <a asp-page="../Exames/Delete" asp-route-id="@item.ID">Deletar</a>
+                        </td>
+                    </tr>
+                }
+            </table>
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-page="./Edit" asp-route-id="@Model.Animal.ID">Alterar dados</a> |
+    <a asp-page="./Index">Voltar para a lista</a>
+</div>

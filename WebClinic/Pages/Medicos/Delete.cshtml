@@ -1,0 +1,76 @@
+﻿@page
+@model WebClinic.Pages.Medicos.DeleteModel
+
+@{
+    ViewData["Title"] = "Delete";
+}
+
+<h2>Deletar Cadastro</h2>
+
+
+<div>
+    <h4>Médico</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Medico.Nome)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Medico.Nome)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Medico.Sobrenome)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Medico.Sobrenome)
+        </dd>
+        <dt>
+            Data de Nascimento
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Medico.DataNascimento)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Medico.CRMV)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Medico.CRMV)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Medico.CPF)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Medico.CPF)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Medico.Endereco)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Medico.Endereco)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Medico.Telefone)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Medico.Telefone)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Medico.Especialidade)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Medico.Especialidade)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Medico.Especializacoes)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Medico.Especializacoes)
+        </dd>
+    </dl>
+    
+    <form method="post">
+        <input type="hidden" asp-for="Medico.ID" />
+        <input type="submit" value="Delete" class="btn btn-default" /> |
+        <a asp-page="./Index">Voltar para lista</a>
+    </form>
+</div>

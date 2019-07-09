@@ -1,0 +1,74 @@
+﻿@page
+@model WebClinic.Pages.Exames.EditModel
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h2>Alterar exame</h2>
+
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="Exame.ID" />
+            <div class="form-group">
+                <label asp-for="Exame.DataRealizacao" class="control-label"></label>
+                <input asp-for="Exame.DataRealizacao" class="form-control" />
+                <span asp-validation-for="Exame.DataRealizacao" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Exame.Descricao" class="control-label"></label>
+                <input asp-for="Exame.Descricao" class="form-control" />
+                <span asp-validation-for="Exame.Descricao" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Exame.Custo" class="control-label"></label>
+                <input asp-for="Exame.Custo" class="form-control" />
+                <span asp-validation-for="Exame.Custo" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Exame.Status" class="control-label"></label>
+                <input asp-for="Exame.Status" class="form-control" />
+                <span asp-validation-for="Exame.Status" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Exame.Pagamento" class="control-label"></label>
+                <input asp-for="Exame.Pagamento" class="form-control" />
+                <span asp-validation-for="Exame.Pagamento" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Exame.AnimalID" class="control-label"></label>
+                <select asp-for="Exame.AnimalID" class="form-control" asp-items="ViewBag.AnimalID"></select>
+                <span asp-validation-for="Exame.AnimalID" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Exame.MedicoID" class="control-label"></label>
+                <select asp-for="Exame.MedicoID" class="form-control" asp-items="ViewBag.MedicoID"></select>
+                <span asp-validation-for="Exame.MedicoID" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Salvar" class="btn btn-default" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-page="./Index">Voltar para lista</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+<script>
+    $.validator.methods.range = function (value, element, param) {
+        var globalizedValue = value.replace(",", ".");
+        return this.optional(element) || (globalizedValue >= param[0] && globalizedValue <= param[1]);
+    };
+
+    $.validator.methods.number = function (value, element) {
+        return this.optional(element) || /^-?(?:\d+|\d{1,3}(?:[\s\.,]\d{3})+)(?:[\.,]\d+)?$/.test(value);
+    };
+</script>
+}

@@ -1,0 +1,57 @@
+﻿@page
+@model WebClinic.Pages.Proprietarios.DeleteModel
+
+@{
+    ViewData["Title"] = "Delete";
+}
+
+<h2>Deletar cadastro</h2>
+
+<div>
+    <h4>Proprietario</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Proprietario.Nome)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Proprietario.Nome)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Proprietario.Sobrenome)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Proprietario.Sobrenome)
+        </dd>
+        <dt>
+            Data de Nascimento
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Proprietario.DataNascimento)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Proprietario.Endereco)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Proprietario.Endereco)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Proprietario.Telefone)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Proprietario.Telefone)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Proprietario.CPF)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Proprietario.CPF)
+        </dd>
+    </dl>
+    
+    <form method="post">
+        <input type="hidden" asp-for="Proprietario.ID" />
+        <input type="submit" value="Deletar" class="btn btn-default" /> |
+        <a asp-page="./Index">Voltar para a lista</a>
+    </form>
+</div>

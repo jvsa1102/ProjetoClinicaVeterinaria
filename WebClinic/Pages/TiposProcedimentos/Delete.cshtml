@@ -1,0 +1,38 @@
+﻿@page
+@model WebClinic.Pages.TiposProcedimentos.DeleteModel
+
+@{
+    ViewData["Title"] = "Delete";
+}
+
+<h2>Deletar procedimento</h2>
+
+<div>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.TipoProcedimento.Nome)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.TipoProcedimento.Nome)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.TipoProcedimento.Descricao)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.TipoProcedimento.Descricao)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.TipoProcedimento.Custo)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.TipoProcedimento.Custo)
+        </dd>
+    </dl>
+    
+    <form method="post">
+        <input type="hidden" asp-for="TipoProcedimento.ID" />
+        <input type="submit" value="Deletar" class="btn btn-default" /> |
+        <a asp-page="./Index">Voltar para lista</a>
+    </form>
+</div>

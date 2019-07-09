@@ -1,0 +1,75 @@
+﻿@page
+@model WebClinic.Pages.Medicos.EditModel
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h2>Alterar dados</h2>
+
+<h4>Médico</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="Medico.ID" />
+            <div class="form-group">
+                <label asp-for="Medico.Nome" class="control-label"></label>
+                <input asp-for="Medico.Nome" class="form-control" />
+                <span asp-validation-for="Medico.Nome" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Medico.Sobrenome" class="control-label"></label>
+                <input asp-for="Medico.Sobrenome" class="form-control" />
+                <span asp-validation-for="Medico.Sobrenome" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Medico.DataNascimento" class="control-label">Data de Nascimento</label>
+                <input asp-for="Medico.DataNascimento" class="form-control" />
+                <span asp-validation-for="Medico.DataNascimento" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Medico.CRMV" class="control-label"></label>
+                <input asp-for="Medico.CRMV" class="form-control" />
+                <span asp-validation-for="Medico.CRMV" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Medico.CPF" class="control-label"></label>
+                <input asp-for="Medico.CPF" class="form-control" />
+                <span asp-validation-for="Medico.CPF" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Medico.Endereco" class="control-label"></label>
+                <input asp-for="Medico.Endereco" class="form-control" />
+                <span asp-validation-for="Medico.Endereco" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Medico.Telefone" class="control-label"></label>
+                <input asp-for="Medico.Telefone" class="form-control" />
+                <span asp-validation-for="Medico.Telefone" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Medico.Especialidade" class="control-label"></label>
+                <input asp-for="Medico.Especialidade" class="form-control" />
+                <span asp-validation-for="Medico.Especialidade" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Medico.Especializacoes" class="control-label"></label>
+                <textarea inputmode="verbatim" rows="10" cols="80" asp-for="Medico.Especializacoes" class="form-control"> </textarea>
+                <span asp-validation-for="Medico.Especializacoes" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Salvar" class="btn btn-default" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-page="./Index">Voltar para lista</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

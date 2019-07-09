@@ -1,0 +1,76 @@
+﻿@page
+@model WebClinic.Pages.Consultas.CreateModel
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h2>Agendar consulta</h2>
+
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="Consulta.DataRealizacao" class="control-label"></label>
+                <input asp-for="Consulta.DataRealizacao" class="form-control" />
+                <span asp-validation-for="Consulta.DataRealizacao" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Consulta.Descricao" class="control-label"></label>
+                <input asp-for="Consulta.Descricao" class="form-control" />
+                <span asp-validation-for="Consulta.Descricao" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Consulta.Custo" class="control-label"></label>
+                <input asp-for="Consulta.Custo" class="form-control" />
+                <span asp-validation-for="Consulta.Custo" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Consulta.Relatorio" class="control-label"></label>
+                <textarea inputmode="verbatim" rows="10" cols="80" asp-for="Consulta.Relatorio" class="form-control"> </textarea>
+                <span asp-validation-for="Consulta.Relatorio" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Consulta.Status" class="control-label"></label>
+                <input asp-for="Consulta.Status" class="form-control" />
+                <span asp-validation-for="Consulta.Status" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Consulta.Pagamento" class="control-label"></label>
+                <input asp-for="Consulta.Pagamento" class="form-control" />
+                <span asp-validation-for="Consulta.Pagamento" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Consulta.AnimalID" class="control-label"></label>
+                <select asp-for="Consulta.AnimalID" class="form-control" asp-items="ViewBag.AnimalID"></select>
+            </div>
+            <div class="form-group">
+                <label asp-for="Consulta.MedicoID" class="control-label"></label>
+                <select asp-for="Consulta.MedicoID" class="form-control" asp-items="ViewBag.MedicoID"></select>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Agendar" class="btn btn-default" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-page="Index">Voltar para lista</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+<script>
+    $.validator.methods.range = function (value, element, param) {
+        var globalizedValue = value.replace(",", ".");
+        return this.optional(element) || (globalizedValue >= param[0] && globalizedValue <= param[1]);
+    };
+
+    $.validator.methods.number = function (value, element) {
+        return this.optional(element) || /^-?(?:\d+|\d{1,3}(?:[\s\.,]\d{3})+)(?:[\.,]\d+)?$/.test(value);
+    };
+</script>
+}

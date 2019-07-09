@@ -1,0 +1,67 @@
+﻿@page
+@model WebClinic.Pages.Procedimentos.DetailsModel
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h2>Detalhes do Procedimento</h2>
+
+<div>
+    <h4>Procedimento</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            Data de realização
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Procedimento.DataRealizacao)
+        </dd>
+        <dt>
+            Tipo de procedimento
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Procedimento.TipoProcedimento.Nome)
+        </dd>
+        <dt>
+            Descrição
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Procedimento.TipoProcedimento.Descricao)
+        </dd>
+        <dt>
+            Custo
+        </dt>
+        <dd>
+            @Html.DisplayFor(mode => Model.Procedimento.TipoProcedimento.Custo)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Procedimento.Status)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Procedimento.Status)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Procedimento.Pagamento)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Procedimento.Pagamento)
+        </dd>
+        <dt>
+            Médico responsável
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Procedimento.Medico.Nome)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Procedimento.Animal)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Procedimento.Animal.Nome)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-page="./Edit" asp-route-id="@Model.Procedimento.ID">Alterar</a> |
+    <a asp-page="./Index">Voltar para lista</a>
+</div>

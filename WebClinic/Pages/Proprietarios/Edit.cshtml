@@ -1,0 +1,60 @@
+﻿@page
+@model WebClinic.Pages.Proprietarios.EditModel
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h2>Alterar dados</h2>
+
+<h4>Proprietario</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="Proprietario.ID" />
+            <div class="form-group">
+                <label asp-for="Proprietario.Nome" class="control-label"></label>
+                <input asp-for="Proprietario.Nome" class="form-control" />
+                <span asp-validation-for="Proprietario.Nome" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Proprietario.Sobrenome" class="control-label"></label>
+                <input asp-for="Proprietario.Sobrenome" class="form-control" />
+                <span asp-validation-for="Proprietario.Sobrenome" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Proprietario.DataNascimento" class="control-label">Data de Nascimento</label>
+                <input asp-for="Proprietario.DataNascimento" class="form-control" />
+                <span asp-validation-for="Proprietario.DataNascimento" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Proprietario.Endereco" class="control-label"></label>
+                <input asp-for="Proprietario.Endereco" class="form-control" />
+                <span asp-validation-for="Proprietario.Endereco" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Proprietario.Telefone" class="control-label"></label>
+                <input asp-for="Proprietario.Telefone" class="form-control" />
+                <span asp-validation-for="Proprietario.Telefone" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Proprietario.CPF" class="control-label"></label>
+                <input asp-for="Proprietario.CPF" class="form-control" />
+                <span asp-validation-for="Proprietario.CPF" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Salvar" class="btn btn-default" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-page="./Index">Voltar para a lista</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

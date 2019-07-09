@@ -1,0 +1,74 @@
+﻿@page
+@model WebClinic.Pages.Animais.DeleteModel
+
+@{
+    ViewData["Title"] = "Delete";
+}
+
+<h2>Deletar cadastro de animal</h2>
+
+<div>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Animal.Nome)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Animal.Nome)
+        </dd>
+        <dt>
+            Data de Nascimento
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Animal.DataNascimento)
+        </dd>
+        <dt>
+            Espécie
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Animal.Especie)
+        </dd>
+        <dt>
+            Raça
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Animal.Raca)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Animal.Sexo)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Animal.Sexo)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Animal.PesoAproximado)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Animal.PesoAproximado)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Animal.Cor)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Animal.Cor)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Animal.Porte)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Animal.Porte)
+        </dd>
+        <dt>
+            Proprietário
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Animal.Proprietario.Nome)
+        </dd>
+    </dl>
+    
+    <form method="post">
+        <input type="hidden" asp-for="Animal.ID" />
+        <input type="submit" value="Deletar" class="btn btn-default" /> |
+        <a asp-page="./Index">Voltar para a lista</a>
+    </form>
+</div>

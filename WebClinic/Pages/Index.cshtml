@@ -1,0 +1,83 @@
+﻿@page
+@model IndexModel
+@{
+    ViewData["Title"] = "Home page";
+}
+
+<h1 style="text-align:center">WebClinic</h1>
+
+<div style="padding-bottom:35px; position:center; padding-left:320px" class="container">
+    <div class="row">
+        <div class="col-sm-3">
+            <div class="card" style="width: 18rem;">
+                <img class="card-img-top" src="~/images/icons8-menu-de-usuário-feminino-48.png" alt="Cadastro de Proprietários">
+                <div class="card-body">
+                    <a asp-page="./Proprietarios/Index" class="btn btn-primary">Proprietários</a>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-3">
+            <div class="card" style="width: 18rem;">
+                <img class="card-img-top" src="~/images/icons8-pegada-de-gato-48.png" alt="Cadastro de Animais">
+                <div class="card-body">
+                    <a asp-page="./Animais/Index" class="btn btn-primary">Animais</a>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-3">
+            <div class="card" style="width: 18rem;">
+                <img class="card-img-top" src="~/images/icons8-doctor-male-50.png" alt="Médicos">
+                <div class="card-body" style="padding-top: 5px;">
+                    <a asp-page="./Medicos/Index" class="btn btn-primary">Médicos</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="container" style="padding-bottom:35px; position:center; padding-left:320px">
+    <div class="row">
+        <div class="col-sm-3">
+            <div class="card" style="width: 18rem;">
+                <img class="card-img-top" src="~/images/icons8-seringa-48.png" alt="Exames">
+                <div class="card-body">
+                    <a asp-page="./Exames/Index" class="btn btn-primary">Exames</a>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-3">
+            <div class="card" style="width: 18rem;">
+                <img class="card-img-top" src="~/images/icons8-calendário-de-saúde-48.png" alt="Procedimentos">
+                <div class="card-body">
+                    <a asp-page="./Procedimentos/Index" class="btn btn-primary">Procedimentos</a>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-3">
+            <div class="card" style="width: 18rem;">
+                <img class="card-img-top" src="~/images/icons8-estetoscópio-48.png" alt="Consultas">
+                <div class="card-body">
+                    <a asp-page="./Procedimentos/Index" class="btn btn-primary">Consultas</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="container">
+    <div class="row">
+        <div class="col-sm-2">
+
+        </div>
+        <div class="col-sm-2">
+
+        </div>
+        <div class="col-sm-2">
+
+        </div>
+    </div>
+</div>
+
+<br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
+
+

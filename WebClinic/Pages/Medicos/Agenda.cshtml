@@ -1,0 +1,121 @@
+﻿@page
+@model WebClinic.Pages.Medicos.AgendaModel
+@{
+    ViewData["Title"] = "Agenda";
+}
+
+<h2>Agenda</h2>
+
+<h3>Dr. @Html.DisplayFor(model => Model.Medico.Nome) @Html.DisplayFor(model => Model.Medico.Sobrenome)</h3>
+<h4>CRMV @Html.DisplayFor(model => Model.Medico.CRMV)</h4>
+<h5>Especialista em @Html.DisplayFor(model => Model.Medico.Especialidade)</h5>
+
+<dt>
+    Consultas
+</dt>
+<dd>
+    <table class="table">
+        <tr>
+            <th>Data</th>
+            <th>Descrição</th>
+            <th>Animal</th>
+            <th>Status</th>
+            <th></th>
+        </tr>
+        @foreach (var consulta in Model.Medico.Consultas.OrderBy(c => c.DataRealizacao))
+        {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => consulta.DataRealizacao)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => consulta.Descricao)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => consulta.Animal.Nome)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => consulta.Status)
+                    </td>
+                    <td>
+                    <a asp-page="../Consultas/Details" asp-route-id="@consulta.ID">Inspecionar</a> |
+                    <a asp-page="../Consultas/Edit" asp-route-id="@consulta.ID">Alterar</a> |
+                    <a asp-page="../Consultas/Delete" asp-route-id="@consulta.ID">Cancelar</a></td>
+                </tr>
+        }
+    </table>
+</dd>
+<dt>
+    Exames
+</dt>
+<dd>
+    <table class="table">
+        <tr>
+            <th>Data</th>
+            <th>Descrição</th>
+            <th>Animal</th>
+            <th>Status</th>
+            <th></th>
+        </tr>
+        @foreach (var exame in Model.Medico.Exames.OrderBy(e => e.DataRealizacao))
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(model => exame.DataRealizacao)
+                </td>
+                <td>
+                    @Html.DisplayFor(model => exame.Descricao)
+                </td>
+                <td>
+                    @Html.DisplayFor(model => exame.Animal.Nome)
+                </td>
+                <td>
+                    @Html.DisplayFor(model => exame.Status)
+                </td>
+                <td>
+                    <a asp-page="../Exames/Details" asp-route-id="@exame.ID">Inspecionar</a> |
+                    <a asp-page="../Exames/Edit" asp-route-id="@exame.ID">Alterar</a> |
+                    <a asp-page="../Exames/Delete" asp-route-id="@exame.ID">Cancelar</a>
+                </td>
+            </tr>
+        }
+    </table>
+</dd>
+<dt>
+    Procedimentos
+</dt>
+<dd>
+    <table class="table">
+        <tr>
+            <th>Data</th>
+            <th>Tipo</th>
+            <th>Animal</th>
+            <th>Status</th>
+            <th></th>
+        </tr>
+        @foreach (var procedimento in Model.Medico.Procedimentos.OrderBy(p => p.DataRealizacao))
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(model => procedimento.DataRealizacao)
+                </td>
+                <td>
+                    @Html.DisplayFor(model => procedimento.TipoProcedimento.Nome)
+                </td>
+                <td>
+                    @Html.DisplayFor(model => procedimento.Animal.Nome)
+                </td>
+                <td>
+                    @Html.DisplayFor(model => procedimento.Status)
+                </td>
+                <td>
+                    <a asp-page="../Procedimentos/Details" asp-route-id="@procedimento.ID">Inspecionar</a> |
+                    <a asp-page="../Procedimentos/Edit" asp-route-id="@procedimento.ID">Alterar</a> |
+                    <a asp-page="../Procedimentos/Delete" asp-route-id="@procedimento.ID">Cancelar</a>
+                </td>
+                
+            </tr>
+        }
+    </table>
+</dd>
+

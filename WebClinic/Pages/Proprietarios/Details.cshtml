@@ -1,0 +1,169 @@
+﻿@page
+@model WebClinic.Pages.Proprietarios.DetailsModel
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h2>Dados do proprietário</h2>
+
+<div>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Proprietario.Nome)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Proprietario.Nome)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Proprietario.Sobrenome)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Proprietario.Sobrenome)
+        </dd>
+        <dt>
+            Data de Nascimento
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Proprietario.DataNascimento)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Proprietario.Endereco)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Proprietario.Endereco)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Proprietario.Telefone)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Proprietario.Telefone)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Proprietario.CPF)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Proprietario.CPF)
+        </dd>
+        <dt>
+            Animais
+        </dt>
+        <dd>
+            <table class="table">
+                <tr>
+                    <th>Nome</th>
+                    <th>Espécie</th>
+                    <th>Idade(anos)</th>
+                    <th></th>
+                </tr>
+                @foreach (var item in Model.Proprietario.Animais.OrderBy(e => e.Nome))
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Nome)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Especie)
+                        </td>
+                        <td>
+                            @{ var idade = DateTime.Today.Year - item.DataNascimento.Year;
+                                if (DateTime.Today.DayOfYear < item.DataNascimento.DayOfYear)
+                                {
+                                    idade = DateTime.Today.Year - item.DataNascimento.Year - 1;
+                                }
+                            }
+                            @idade
+                        </td>
+                        <td><a asp-page="../Animais/Details" asp-route-id="@item.ID">Inspecionar</a></td>
+                    </tr>
+                }
+            </table>
+        </dd>
+        <dt>
+            Pendências
+        </dt>
+        <dd>
+            <table class="table">
+                <tr>
+                    <th>Tipo</th>
+                    <th>Data</th>
+                    <th>Custo</th>
+                    <th>Status</th>
+                    <th></th>
+                </tr>
+                @foreach (var item in Model.Proprietario.Animais)
+                {
+                    foreach (var pend in item.Procedimentos)
+                    {
+                        if (pend.Pagamento == "Pendente")
+                        {
+                            <tr>
+                                <td>
+                                    @Html.DisplayFor(modelItem => pend.TipoProcedimento.Nome)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => pend.DataRealizacao)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => pend.TipoProcedimento.Custo)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => pend.Status)
+                                </td>
+                                <td><a asp-page="../Procedimentos/Details" asp-route-id="@pend.ID">Inspecionar</a></td>
+                            </tr>
+                        }
+
+                    }
+                    foreach (var consulta in item.Consultas)
+                    {
+                        if (consulta.Pagamento == "Pendente")
+                        {
+                            <tr>
+                                <td>
+                                    Consulta
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => consulta.DataRealizacao)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => consulta.Custo)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => consulta.Status)
+                                </td>
+                                <td><a asp-page="../Consultas/Details" asp-route-id="@consulta.ID">Inspecionar</a></td>
+                            </tr>
+                        }
+                    }
+                    foreach (var exame in item.Exames)
+                    {
+                        if (exame.Pagamento == "Pendente")
+                        {
+                            <tr>
+                                <td>
+                                    @Html.DisplayFor(modelItem => exame.Descricao)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => exame.DataRealizacao)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => exame.Custo)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => exame.Status)
+                                </td>
+                                <td><a asp-page="../Exames/Details" asp-route-id="@exame.ID">Inspecionar</a></td>
+                            </tr>
+                        }
+                    }
+                }
+            </table>
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-page="./Edit" asp-route-id="@Model.Proprietario.ID">Alterar</a> |
+    <a asp-page="./Index">Voltar para a lista</a>
+</div>

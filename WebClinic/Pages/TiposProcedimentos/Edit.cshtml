@@ -1,0 +1,56 @@
+﻿@page
+@model WebClinic.Pages.TiposProcedimentos.EditModel
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h2>Alterar procedimento</h2>
+
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="TipoProcedimento.ID" />
+            <div class="form-group">
+                <label asp-for="TipoProcedimento.Nome" class="control-label"></label>
+                <input asp-for="TipoProcedimento.Nome" class="form-control" />
+                <span asp-validation-for="TipoProcedimento.Nome" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="TipoProcedimento.Descricao" class="control-label"></label>
+                <input asp-for="TipoProcedimento.Descricao" class="form-control" />
+                <span asp-validation-for="TipoProcedimento.Descricao" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="TipoProcedimento.Custo" class="control-label"></label>
+                <input asp-for="TipoProcedimento.Custo" class="form-control" />
+                <span asp-validation-for="TipoProcedimento.Custo" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Salvar" class="btn btn-default" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-page="./Index">Voltar para lista</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+<script>
+    $.validator.methods.range = function (value, element, param) {
+        var globalizedValue = value.replace(",", ".");
+        return this.optional(element) || (globalizedValue >= param[0] && globalizedValue <= param[1]);
+    };
+
+    $.validator.methods.number = function (value, element) {
+        return this.optional(element) || /^-?(?:\d+|\d{1,3}(?:[\s\.,]\d{3})+)(?:[\.,]\d+)?$/.test(value);
+    };
+</script>
+}
+
+

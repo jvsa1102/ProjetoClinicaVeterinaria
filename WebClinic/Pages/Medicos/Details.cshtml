@@ -1,0 +1,82 @@
+﻿@page
+@model WebClinic.Pages.Medicos.DetailsModel
+
+@{
+    ViewData["Title"] = "Details";
+}
+<div style="padding-top:10px" class="container">
+    <div class="card" style="width: 18rem;">
+        <img class="card-img-top" src="~/images/icons8-calendário-50.png" alt="Agenda">
+        <div class="card-body">
+            <a asp-page="./Agenda" asp-route-id="@Model.Medico.ID" class="btn btn-primary">Agenda</a>
+        </div>
+    </div>
+</div>
+<br />
+<h2>Dados do Médico</h2>
+
+<div>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Medico.Nome)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Medico.Nome)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Medico.Sobrenome)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Medico.Sobrenome)
+        </dd>
+        <dt>
+            Data de Nascimento
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Medico.DataNascimento)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Medico.CRMV)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Medico.CRMV)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Medico.CPF)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Medico.CPF)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Medico.Endereco)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Medico.Endereco)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Medico.Telefone)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Medico.Telefone)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Medico.Especialidade)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Medico.Especialidade)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Medico.Especializacoes)
+        </dt>
+        <dd>
+            <textarea rows="10" cols="10" readonly>
+                @Html.DisplayFor(model => model.Medico.Especializacoes)
+            </textarea>
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-page="./Edit" asp-route-id="@Model.Medico.ID">Alterar</a> |
+    <a asp-page="./Index">Voltar para lista</a>
+</div>

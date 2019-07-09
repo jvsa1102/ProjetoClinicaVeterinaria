@@ -1,0 +1,49 @@
+﻿@page
+@model WebClinic.Pages.Proprietarios.IndexModel
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h2>Cadastros de proprietários</h2>
+
+<p>
+    <a asp-page="Create"><input type="button" class="btn btn-primary" value="Cadastrar proprietário"></a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Proprietario[0].Nome)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Proprietario[0].Sobrenome)
+            </th>
+            <th>
+                Data de Nascimento
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model.Proprietario.OrderBy(e => e.Nome)) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Nome)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Sobrenome)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DataNascimento)
+            </td>
+            <td>
+                <a asp-page="./Edit" asp-route-id="@item.ID">Alterar</a> |
+                <a asp-page="./Details" asp-route-id="@item.ID">Inspecionar</a> |
+                <a asp-page="./Delete" asp-route-id="@item.ID">Deletar</a>
+            </td>
+        </tr>
+}
+    </tbody>
+
+</table>
